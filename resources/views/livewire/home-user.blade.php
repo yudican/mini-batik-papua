@@ -1,18 +1,18 @@
 <div class="page-inner">
     <div class="row">
-        <div class="col-md-4">
-            <div class="list-group">
-                <button class="list-group-item list-group-item-action {{$selectedJenis == 'all' ? 'active' : ''}}" wire:click="filterProduk('{{$selected}}','all','{{$search}}')">
-                    Semua Kategori
-                </button>
-                @foreach ($jenis_produk as $jenis)
-                <button class="list-group-item list-group-item-action {{$selectedJenis == $jenis->id ? 'active' : ''}}" wire:click="filterProduk('{{$selected}}','{{$jenis->id}}','{{$search}}')">
-                    {{$jenis->nama_jenis}}
-                </button>
-                @endforeach
+        <div class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="table">Cari Produk</label>
+                        <input type="text" wire:model="search" wire:keyup="filterProduk('{{$selected}}','{{$selectedJenis}}',$event.target.value)" class="form-control">
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
 
@@ -37,40 +37,36 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-12 mt-2">
-            <div class="card">
-                <div class="card-body">
+        <div class="col-md-3 my-4">
+            <p>Kategori</p>
+            <div class="list-group">
+                <button class="list-group-item list-group-item-action {{$selectedJenis == 'all' ? 'active' : ''}}" wire:click="filterProduk('{{$selected}}','all','{{$search}}')">
+                    Semua Kategori
+                </button>
+                @foreach ($jenis_produk as $jenis)
+                <button class="list-group-item list-group-item-action {{$selectedJenis == $jenis->id ? 'active' : ''}}" wire:click="filterProduk('{{$selected}}','{{$jenis->id}}','{{$search}}')">
+                    {{$jenis->nama_jenis}}
+                </button>
+                @endforeach
+            </div>
 
-                    <div class="form-check form-check-inline">
-                        <button class="btn btn-{{$selected == 'all' ? 'primary' : 'primary-outline'}} btn-sm mr-2" wire:click="filterProduk('all','{{$selectedJenis}}','{{$search}}')">Semua</button>
-                        @foreach ($katalog_produk as $katalog)
-                        @if ($selected == $katalog->id ?? 'all')
-                        <button class="btn btn-primary btn-sm mr-2" wire:click="filterProduk('{{$katalog->id}}','{{$selectedJenis}}','{{$search}}')">{{$katalog->nama_katalog}}</button>
-                        @else
-                        <button class="btn btn-primary-outline btn-sm mr-2" wire:click="filterProduk('{{$katalog->id}}','{{$selectedJenis}}','{{$search}}')">{{$katalog->nama_katalog}}</button>
-                        @endif
-
-                        @endforeach
-                    </div>
-
-                </div>
+            <p class="mt-4">Katalog</p>
+            <div class="list-group">
+                <button class="list-group-item list-group-item-action {{$selected == 'all' ? 'active' : ''}} btn-sm mr-2" wire:click="filterProduk('all','{{$selectedJenis}}','{{$search}}')">Semua</button>
+                @foreach ($katalog_produk as $katalog)
+                @if ($selected == $katalog->id ?? 'all')
+                <button class="list-group-item list-group-item-action" wire:click="filterProduk('{{$katalog->id}}','{{$selectedJenis}}','{{$search}}')">{{$katalog->nama_katalog}}</button>
+                @else
+                <button class="list-group-item list-group-item-action" wire:click="filterProduk('{{$katalog->id}}','{{$selectedJenis}}','{{$search}}')">{{$katalog->nama_katalog}}</button>
+                @endif
+                @endforeach
             </div>
         </div>
-        <div class="col-md-12 mt-2">
-            <div class="card">
-                <div class="card-body">
 
-                    <div class="form-group">
-                        <label for="table">Cari Produk</label>
-                        <input type="text" wire:model="search" wire:keyup="filterProduk('{{$selected}}','{{$selectedJenis}}',$event.target.value)" class="form-control">
-                    </div>
 
-                </div>
-            </div>
-        </div>
-        @foreach ($katalogs as $katalog)
-        @if ($katalog->produk->count() > 0)
-        <div class="col-md-12 mt-4">
+        <div class="col-md-9 mt-4">
+            @foreach ($katalogs as $katalog)
+            @if ($katalog->produk->count() > 0)
             <h1>{{$katalog->nama_katalog}}</h1>
             <div class="row">
                 @foreach ($katalog->produk as $product)
@@ -106,8 +102,8 @@
                 @endif
                 @endforeach
             </div>
+            @endif
+            @endforeach
         </div>
-        @endif
-        @endforeach
     </div>
 </div>

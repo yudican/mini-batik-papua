@@ -16,8 +16,7 @@
                 <div class="card-body row">
                     <div class="col-md-6">
                         <figure class="imagecheck-figure text-center">
-                            <img src="{{asset('storage/'.$product->foto_produk)}}" style="height: 400px;"
-                                alt="{{$product->nama_produk}}" class="imagecheck-image w-100">
+                            <img src="{{asset('storage/'.$product->foto_produk)}}" style="height: 400px;" alt="{{$product->nama_produk}}" class="imagecheck-image w-100">
                         </figure>
                     </div>
                     <div class="col-md-6 pt-3">
@@ -41,12 +40,13 @@
                             @if ($product->stok > 0)
                             <button class="btn btn-primary btn-sm" wire:click="addToCart">Tambah Ke Keranjang</button>
                             @if ($seller)
-                            <button type="button" wire:click="startChat('{{$seller->id}}')"
-                                class="btn btn-success btn-sm ml-2">Diskusi</button>
+                            <button type="button" wire:click="startChat('{{$seller->id}}')" class="btn btn-success btn-sm ml-2">Diskusi</button>
                             @endif
                             @else
                             <button class="btn btn-primary btn-sm" disabled>Tambah Ke Keranjang</button>
                             @endif
+                            @else
+                            <a href="{{route('login')}}"> <button class="btn btn-primary btn-sm">Beli Sekarang</button></a>
                             @endif
                         </div>
                     </div>

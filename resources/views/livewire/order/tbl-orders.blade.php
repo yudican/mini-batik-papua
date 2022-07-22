@@ -32,8 +32,7 @@
                     <x-text-field type="text" name="catatan" label="Catatan" />
 
                     <div class="form-group">
-                        <button class="btn btn-primary pull-right"
-                            wire:click="{{$update_mode ? 'update' : 'store'}}">Simpan</button>
+                        <button class="btn btn-primary pull-right" wire:click="{{$update_mode ? 'update' : 'store'}}">Simpan</button>
                     </div>
                 </div>
             </div>
@@ -44,8 +43,7 @@
         </div>
 
         {{-- Modal confirm --}}
-        <div id="confirm-modal" wire:ignore.self class="modal fade" tabindex="-1" permission="dialog"
-            aria-labelledby="my-modal-title" aria-hidden="true">
+        <div id="confirm-modal" wire:ignore.self class="modal fade" tabindex="-1" permission="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
             <div class="modal-dialog" permission="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -55,10 +53,8 @@
                         <p>Apakah anda yakin hapus data ini.?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" wire:click='delete' class="btn btn-danger btn-sm"><i
-                                class="fa fa-check pr-2"></i>Ya, Hapus</button>
-                        <button class="btn btn-primary btn-sm" wire:click='_reset'><i
-                                class="fa fa-times pr-2"></i>Batal</a>
+                        <button type="submit" wire:click='delete' class="btn btn-danger btn-sm"><i class="fa fa-check pr-2"></i>Ya, Hapus</button>
+                        <button class="btn btn-primary btn-sm" wire:click='_reset'><i class="fa fa-times pr-2"></i>Batal</a>
                     </div>
                 </div>
             </div>
@@ -66,8 +62,7 @@
 
 
         {{-- Modal form --}}
-        <div id="form-modal" wire:ignore.self class="modal fade" tabindex="-1" permission="dialog"
-            aria-labelledby="my-modal-title" aria-hidden="true">
+        <div id="form-modal" wire:ignore.self class="modal fade" tabindex="-1" permission="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
             <div class="modal-dialog" permission="document">
                 @if ($order)
 
@@ -162,18 +157,15 @@
                         @if ($order)
                         @if (auth()->user()->role->role_type == 'member' && in_array($order->status, ['Selesai']) &&
                         !$order->rate)
-                        <button type="button" wire:click='rateOrder' class="btn btn-primary btn-sm"><i
-                                class="fa fa-check pr-2"></i>Simpan</button>
+                        <button type="button" wire:click='rateOrder' class="btn btn-primary btn-sm"><i class="fa fa-check pr-2"></i>Simpan</button>
                         @else
                         @if (!in_array($order->status, ['Selesai']))
-                        <button type="button" wire:click='updateOrder' class="btn btn-primary btn-sm"><i
-                                class="fa fa-check pr-2"></i>Simpan</button>
+                        <button type="button" wire:click='updateOrder' class="btn btn-primary btn-sm"><i class="fa fa-check pr-2"></i>Simpan</button>
                         @endif
                         @endif
 
                         @endif
-                        <button class="btn btn-danger btn-sm" wire:click='_reset'><i
-                                class="fa fa-times pr-2"></i>Batal</a>
+                        <button class="btn btn-danger btn-sm" wire:click='_reset'><i class="fa fa-times pr-2"></i>Batal</a>
 
                     </div>
                 </div>
@@ -222,12 +214,10 @@
                     <div class="modal-footer">
                         @if ($order)
                         @if ($order->status == 'Diproses')
-                        <button type="button" wire:click='update' class="btn btn-primary btn-sm"><i
-                                class="fa fa-check pr-2"></i>Simpan</button>
+                        <button type="button" wire:click='update' class="btn btn-primary btn-sm"><i class="fa fa-check pr-2"></i>Simpan</button>
                         @endif
                         @endif
-                        <button class="btn btn-danger btn-sm" wire:click='_reset'><i
-                                class="fa fa-times pr-2"></i>Batal</a>
+                        <button class="btn btn-danger btn-sm" wire:click='_reset'><i class="fa fa-times pr-2"></i>Batal</a>
 
                     </div>
                 </div>
