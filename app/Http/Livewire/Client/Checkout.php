@@ -128,7 +128,7 @@ class Checkout extends Component
             ]);
         } catch (\Throwable $th) {
             DB::rollback();
-            dd($th->getMessage());
+            // dd($th->getMessage());
             return $this->emit('showAlertError', [
                 'msg' => 'Transaksi Gagal, silahkan coba lagi.',
             ]);

@@ -66,7 +66,7 @@
             <div class="modal-dialog" permission="document">
                 @if ($order)
 
-                @if (in_array($order->status, ['Dikirim','Diterima','Diproses','Selesai','Siap Diambil', 'Diambil']))
+                @if (in_array($order->status, ['Dikirim','Diterima','Selesai','Siap Diambil', 'Diambil']))
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title text-capitalize" id="my-modal-title">
