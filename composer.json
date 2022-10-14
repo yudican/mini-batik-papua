@@ -35,7 +35,6 @@
             "vendor/livewire/livewire/src/Controllers/FileUploadHandler.php"
         ],
         "files": [
-            "app/helpers.php",
             "app/overrides/livewire/FilePreviewHandler.php",
             "app/overrides/livewire/FileUploadHandler.php"
         ]
