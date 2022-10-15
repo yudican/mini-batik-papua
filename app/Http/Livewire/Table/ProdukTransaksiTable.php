@@ -39,6 +39,7 @@ class ProdukTransaksiTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('jumlah')->label('Jumlah')->searchable(),
             Column::name('jenis_transaksi')->label('Jenis Transaksi')->searchable(),
             Column::name('tanggal_transaksi')->label('Tanggal Transaksi')->searchable(),

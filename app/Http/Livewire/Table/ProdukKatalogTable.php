@@ -24,6 +24,7 @@ class ProdukKatalogTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('nama_katalog')->label('Nama Katalog')->searchable(),
 
             Column::callback(['id'], function ($id) {

@@ -24,14 +24,15 @@ class PaymentMethodTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('nama_bank')->label('Nama Bank')->searchable(),
-Column::callback(['logo_bank'], function ($image) {
+            Column::callback(['logo_bank'], function ($image) {
                 return view('livewire.components.photo', [
                     'image_url' => asset('storage/' . $image),
                 ]);
             })->label(__('Logo Bank')),
-Column::name('nomor_rekening_bank')->label('Nomor Rekening Bank')->searchable(),
-Column::name('nama_rekening_bank')->label('Nama Rekening Bank')->searchable(),
+            Column::name('nomor_rekening_bank')->label('Nomor Rekening Bank')->searchable(),
+            Column::name('nama_rekening_bank')->label('Nama Rekening Bank')->searchable(),
 
             Column::callback(['id'], function ($id) {
                 return view('livewire.components.action-button', [

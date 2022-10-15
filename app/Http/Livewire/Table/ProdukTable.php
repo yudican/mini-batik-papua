@@ -35,6 +35,7 @@ class ProdukTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('nama_produk')->label('Nama Produk')->searchable(),
             Column::callback(['foto_produk'], function ($image) {
                 return view('livewire.components.photo', [

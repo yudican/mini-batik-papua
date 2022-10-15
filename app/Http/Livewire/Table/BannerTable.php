@@ -24,6 +24,7 @@ class BannerTable extends LivewireDatatable
     {
         $this->hide = HideableColumn::where(['table_name' => $this->table_name, 'user_id' => auth()->user()->id])->pluck('column_name')->toArray();
         return [
+            Column::name('id')->label('No.'),
             Column::name('banner_title')->label('Title')->searchable(),
             Column::callback(['banner_image'], function ($image) {
                 return view('livewire.components.photo', [

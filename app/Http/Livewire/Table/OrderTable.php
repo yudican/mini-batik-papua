@@ -35,6 +35,7 @@ class OrderTable extends LivewireDatatable
         $role = auth()->user()->role;
         if ($role->role_type == 'member') {
             return [
+                Column::name('id')->label('No.'),
                 Column::name('kode_order')->label('Kode Order')->searchable(),
                 Column::callback('total_order', function ($total) {
                     return 'Rp. ' . number_format($total);
